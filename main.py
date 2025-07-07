@@ -2,7 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-import openai
+from openai import OpenAI
 from datetime import datetime
 import json
 
@@ -21,7 +21,7 @@ if OPENAI_API_KEY is None:
     exit()
 
 # Setup OpenAI
-openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Mengatur intents (izin) yang dibutuhkan bot
 intents = discord.Intents.default()
@@ -282,15 +282,15 @@ async def ask(ctx, pertanyaan: str):
     await ctx.defer()
     
     try:
-        # Panggil OpenAI API
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        # Panggil OpenAI API dengan cara baru
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo-0125",
             messages=[
                 {"role": "system", "content": LIVALES_CONTEXT + "\nSelalu sertakan link website https://livales.netlify.app/ dalam jawaban jika relevan."},
                 {"role": "user", "content": pertanyaan}
             ],
-            max_tokens=500,
-            temperature=0.7
+            max_tokens=256,
+            temperature=0.5
         )
         
         answer = response.choices[0].message.content
@@ -316,6 +316,7 @@ async def ask(ctx, pertanyaan: str):
         await ctx.followup.send(embed=embed)
         
     except Exception as e:
+        print(f"Error detail: {e}")  # Untuk debugging
         error_embed = discord.Embed(
             title="❌ Error",
             description=f"Maaf, terjadi kesalahan saat memproses pertanyaan Anda.",
@@ -324,6 +325,11 @@ async def ask(ctx, pertanyaan: str):
         error_embed.add_field(
             name="💡 Saran",
             value="Coba lagi nanti atau hubungi admin server.",
+            inline=False
+        )
+        error_embed.add_field(
+            name="Detail Error",
+            value=f"```{str(e)[:200]}```",
             inline=False
         )
         error_embed.set_footer(text="Livales Bot")
