@@ -82,8 +82,16 @@ Ganti `your_bot_token` dengan token bot dari Discord Developer Portal.
 
 # 🚀 Menjalankan bot
 
+Untuk menjalankan bot, kamu bisa gunakan salah satu perintah berikut tergantung struktur project-mu:
+
 ```bash
 python main.py
+```
+
+atau langsung menjalankan logika bot (jika sesuai struktur project dari folder `bot/`):
+
+```bash
+python bot.py
 ```
 
 > Jika berhasil, terminal akan menampilkan:
