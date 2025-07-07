@@ -183,7 +183,8 @@ async def help_command(ctx):
         ("🗑️ `/clear-notes`", "Hapus semua catatan Anda"),
         ("❓ `/ask [pertanyaan]`", "Tanyakan apa saja tentang Livales"),
         ("🏢 `/about-livales`", "Informasi lengkap tentang perusahaan"),
-        ("📚 `/help`", "Tampilkan menu bantuan ini")
+        ("📚 `/help`", "Tampilkan menu bantuan ini"),
+        ("🤫 `/vale`", "Sapa seseorang")
     ]
     
     for cmd, desc in commands_list:
