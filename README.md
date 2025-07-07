@@ -7,6 +7,12 @@ Bot Discord sederhana untuk menyapa pengguna dengan slash command `/halo`.
 ## ✨ Fitur
 
 - `/halo` → Bot akan membalas sapaan dengan nama pengguna.
+- `/take-note` - Simpan catatan pribadi
+- `/my-notes` - Lihat catatan tersimpan
+- `/ask` - Tanyakan apa saja tentang Livales
+- `/about-livales` - Info lengkap tentang perusahaan
+- `/clear-notes` - Hapus semua catatan
+- `/vale` - Sapa seseorang
 
 ---
 
@@ -69,6 +75,7 @@ Edit file `.env` dan ganti:
 
 ```bash
 DISCORD_TOKEN=your_bot_token
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 Ganti `your_bot_token` dengan token bot dari Discord Developer Portal.
