@@ -104,3 +104,15 @@ python main.py
 ```php-template
 Halo juga, <username>! 👋
 ```
+
+## 📂 Struktur Project
+
+Project ini terdiri dari dua file utama untuk bot:
+
+- **`main.py`**  
+  Berisi _full syntax_ lengkap untuk menjalankan bot Discord.  
+  Cocok untuk kamu yang ingin melihat struktur utuh program dari awal hingga akhir.
+
+- **`bot.py`**  
+  Berisi logika bot yang terpisah di folder `bot/` (misalnya: command, event handler, dsb).  
+  File ini di-_import_ oleh `main.py` agar struktur kode lebih modular dan mudah dirawat.
